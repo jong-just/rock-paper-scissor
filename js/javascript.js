@@ -41,9 +41,11 @@ function playerChoiceCheck(playerChoice) {
 //result announcement
 function winnerOutput (playerHand, computerHand, results) {
     if (results) {
-        console.log(`You win! ${playerHand} beats ${computerHand}`)
+        console.log(`You win! ${playerHand} beats ${computerHand}`);
+        ++playerScore;
     } else {
-        console.log(`You lose! ${computerHand} beats ${playerHand}`)
+        console.log(`You lose! ${computerHand} beats ${playerHand}`);
+        ++computerScore;
     }
 }
 
@@ -70,13 +72,55 @@ function gameRound(playerSelection, computerSelection) {
 }
 
 //input from player (rock, paper, scissors) that is case insensitive
-let playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
-playerHand = playerHand.toLowerCase();
+let playerHand;
+let playerScore = 0;
+let computerScore = 0;
 
+/*
+playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
+playerHand = playerHand.toLowerCase();
+*/
+
+/*
 //actually where the game is called
 if (playerChoiceCheck(playerHand)) {
     gameRound(playerHand, getComputerChoice());
 } else {
     console.log('Sorry, that is not a valid hand. Please try again.');
 }
+*/
 
+
+game()
+
+function game() {
+    
+    for (let i = 0; i < 5; i++) {
+        playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
+        playerHand = playerHand.toLowerCase();
+        console.log(`Round: ${i + 1}`);
+        playRound(playerHand);
+        console.log(`You: ${playerScore} | Computer: ${computerScore}\n`);
+    }
+}
+
+function playRound(playerHand) {
+    if (playerChoiceCheck(playerHand)) {
+        gameRound(playerHand, getComputerChoice());
+    } else {
+        console.log('Sorry, that is not a valid hand. Please try again.');
+    }
+}
+
+
+/*
+
+call the game
+
+player chose hand
+game logic
+keep score
+output score
+go again
+
+*/
