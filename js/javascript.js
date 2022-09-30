@@ -1,6 +1,7 @@
 let playerHand;
 let playerScore = 0;
 let computerScore = 0;
+let tieScore = 0;
 
 function getComputerChoice() {
     //create a integer variable called randomNumber
@@ -71,6 +72,7 @@ function gameRound(playerSelection, computerSelection) {
         winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === computerSelection) {
         console.log(`You tied! ${playerSelection} ties with ${computerSelection}`);
+        ++tieScore;
     }
     //output results
 }
@@ -82,7 +84,7 @@ function game() {
         playerHand = getPlayerHand();
         console.log(`Round: ${i + 1}`);
         playRound(playerHand);
-        console.log(`You: ${playerScore} | Computer: ${computerScore}`);
+        console.log(`You: ${playerScore} | Computer: ${computerScore} | Tied: ${tieScore}`);
     }
 }
 
