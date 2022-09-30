@@ -1,3 +1,7 @@
+let playerHand;
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     //create a integer variable called randomNumber
     let randomNumber;
@@ -71,29 +75,6 @@ function gameRound(playerSelection, computerSelection) {
     //output results
 }
 
-//input from player (rock, paper, scissors) that is case insensitive
-let playerHand;
-let playerScore = 0;
-let computerScore = 0;
-
-/*
-playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
-playerHand = playerHand.toLowerCase();
-*/
-
-/*
-//actually where the game is called
-if (playerChoiceCheck(playerHand)) {
-    gameRound(playerHand, getComputerChoice());
-} else {
-    console.log('Sorry, that is not a valid hand. Please try again.');
-}
-*/
-
-
-game()
-
-
 //game function
 function game() {
     //loop to allow for 5 rounds
@@ -121,15 +102,5 @@ function getPlayerHand() {
     return playerChoice;
 }
 
-
-/*
-
-call the game
-
-player chose hand
-game logic
-keep score
-output score
-go again
-
-*/
+//call game, this is what actually starts the whole thing
+game();
