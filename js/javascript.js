@@ -71,6 +71,7 @@ function gameRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === computerSelection) {
+        //for tied game
         console.log(`You tied! ${playerSelection} ties with ${computerSelection}`);
         ++tieScore;
     }
