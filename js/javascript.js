@@ -74,7 +74,7 @@ function gameRound(playerSelection, computerSelection) {
         console.log(`You tied! ${playerSelection} ties with ${computerSelection}`);
         ++tieScore;
     }
-    //output results
+
 }
 
 //game function
