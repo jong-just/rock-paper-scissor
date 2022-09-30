@@ -93,23 +93,32 @@ if (playerChoiceCheck(playerHand)) {
 
 game()
 
+
+//game function
 function game() {
-    
+    //loop to allow for 5 rounds
     for (let i = 0; i < 5; i++) {
-        playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
-        playerHand = playerHand.toLowerCase();
+        playerHand = getPlayerHand();
         console.log(`Round: ${i + 1}`);
         playRound(playerHand);
-        console.log(`You: ${playerScore} | Computer: ${computerScore}\n`);
+        console.log(`You: ${playerScore} | Computer: ${computerScore}`);
     }
 }
 
+//function for playing a round. 
 function playRound(playerHand) {
     if (playerChoiceCheck(playerHand)) {
         gameRound(playerHand, getComputerChoice());
     } else {
         console.log('Sorry, that is not a valid hand. Please try again.');
     }
+}
+
+//prompt for player's hand and makes it case insensitive
+function getPlayerHand() {
+    let playerChoice = prompt('What hand do you play? (rock, paper, scissors): ', '');
+    playerChoice = playerChoice.toLowerCase();
+    return playerChoice;
 }
 
 
