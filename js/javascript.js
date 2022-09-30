@@ -37,18 +37,8 @@ function playerChoiceCheck(playerChoice) {
     }
 }
 
-function resultsOutput(results) {
-    if (results) {
-        console.log('You win!');
-    } else {
-        console.log('You lose!');
-    }
-}
 
-//input player and computer hand
-//out player hand and computer hand
-//say who won
-
+//result announcement
 function winnerOutput (playerHand, computerHand, results) {
     if (results) {
         console.log(`You win! ${playerHand} beats ${computerHand}`)
@@ -57,10 +47,10 @@ function winnerOutput (playerHand, computerHand, results) {
     }
 }
 
+
+//game logic: compares both hands, determine who wins, output results
 function gameRound(playerSelection, computerSelection) {
     //run through game logic to determine winner
-    console.log(playerSelection);
-    console.log(computerSelection);
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         winnerOutput(playerSelection, computerSelection, 0);
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
@@ -83,7 +73,7 @@ function gameRound(playerSelection, computerSelection) {
 let playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
 playerHand = playerHand.toLowerCase();
 
-
+//actually where the game is called
 if (playerChoiceCheck(playerHand)) {
     gameRound(playerHand, getComputerChoice());
 } else {
