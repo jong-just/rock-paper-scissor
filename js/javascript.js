@@ -45,24 +45,36 @@ function resultsOutput(results) {
     }
 }
 
+//input player and computer hand
+//out player hand and computer hand
+//say who won
+
+function winnerOutput (playerHand, computerHand, results) {
+    if (results) {
+        console.log(`You win! ${playerHand} beats ${computerHand}`)
+    } else {
+        console.log(`You lose! ${computerHand} beats ${playerHand}`)
+    }
+}
+
 function gameRound(playerSelection, computerSelection) {
     //run through game logic to determine winner
     console.log(playerSelection);
     console.log(computerSelection);
     if (playerSelection === 'rock' && computerSelection === 'paper') {
-        resultsOutput(0);
+        winnerOutput(playerSelection, computerSelection, 0);
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        resultsOutput(1);
+        winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        resultsOutput(1);
+        winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        resultsOutput(0);
+        winnerOutput(playerSelection, computerSelection, 0);
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        resultsOutput(0);
+        winnerOutput(playerSelection, computerSelection, 0);
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        resultsOutput(1);
+        winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === computerSelection) {
-        console.log('You tied!');
+        console.log(`You tied! ${playerSelection} ties with ${computerSelection}`);
     }
     //output results
 }
