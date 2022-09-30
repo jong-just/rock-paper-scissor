@@ -27,11 +27,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-console.log(getComputerChoice());
-
-//input from player (rock, paper, scissors) that is case insensitive
-let playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
-playerHand = playerHand.toLowerCase();
 
 //function to check if player made a valid choice
 function playerChoiceCheck(playerChoice) {
@@ -40,10 +35,6 @@ function playerChoiceCheck(playerChoice) {
     } else {
         return false;
     }
-}
-
-if (playerChoiceCheck) {
-    gameRound(playerHand, getComputerChoice());
 }
 
 function resultsOutput(results) {
@@ -56,6 +47,8 @@ function resultsOutput(results) {
 
 function gameRound(playerSelection, computerSelection) {
     //run through game logic to determine winner
+    console.log(playerSelection);
+    console.log(computerSelection);
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         resultsOutput(0);
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
@@ -72,5 +65,16 @@ function gameRound(playerSelection, computerSelection) {
         console.log('You tied!');
     }
     //output results
+}
+
+//input from player (rock, paper, scissors) that is case insensitive
+let playerHand = prompt('What hand do you play? (rock, paper, scissors): ', '');
+playerHand = playerHand.toLowerCase();
+
+
+if (playerChoiceCheck(playerHand)) {
+    gameRound(playerHand, getComputerChoice());
+} else {
+    console.log('Sorry, that is not a valid hand. Please try again.');
 }
 
