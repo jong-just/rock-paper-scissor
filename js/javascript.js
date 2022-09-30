@@ -35,8 +35,42 @@ playerHand = playerHand.toLowerCase();
 
 //function to check if player made a valid choice
 function playerChoiceCheck(playerChoice) {
-    if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors')
+    if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
         return true;
+    } else {
+        return false;
+    }
 }
 
-//function to of game
+if (playerChoiceCheck) {
+    gameRound(playerHand, getComputerChoice());
+}
+
+function resultsOutput(results) {
+    if (results) {
+        console.log('You win!');
+    } else {
+        console.log('You lose!');
+    }
+}
+
+function gameRound(playerSelection, computerSelection) {
+    //run through game logic to determine winner
+    if (playerSelection === 'rock' && computerSelection === 'paper') {
+        resultsOutput(0);
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        resultsOutput(1);
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        resultsOutput(1);
+    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        resultsOutput(0);
+    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        resultsOutput(0);
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        resultsOutput(1);
+    } else if (playerSelection === computerSelection) {
+        console.log('You tied!');
+    }
+    //output results
+}
+
