@@ -1,6 +1,6 @@
 const buttons = document.querySelectorAll('button');
 const container = document.querySelector('#container');
-const scoreBoard = document.createElement('div');
+const resultMsg = document.createElement('div');
 let playerHand = '';
 let playerScore = 0;
 let computerScore = 0;
@@ -60,24 +60,24 @@ function gameRound(playerSelection, computerSelection) {
         winnerOutput(playerSelection, computerSelection, 1);
     } else if (playerSelection === computerSelection) {
         //for tied game
-        scoreBoard.classList.add('scoreBoard');
-        scoreBoard.textContent = `You tied! ${playerSelection} ties with ${computerSelection}`;
+        resultMsg.classList.add('resultMsg');
+        resultMsg.textContent = `You tied! ${playerSelection} ties with ${computerSelection}`;
         ++tieScore;
-        container.appendChild(scoreBoard);
+        container.appendChild(resultMsg);
     }
 
 }
 
 function winnerOutput (playerHand, computerHand, results) {
     if (results) {
-        scoreBoard.classList.add('scoreBoard');
-        scoreBoard.textContent = `You win! ${playerHand} beats ${computerHand}`;
+        resultMsg.classList.add('resultMsg');
+        resultMsg.textContent = `You win! ${playerHand} beats ${computerHand}`;
         ++playerScore;
-        container.appendChild(scoreBoard);
+        container.appendChild(resultMsg);
     } else {
-        scoreBoard.classList.add('scoreBoard');
-        scoreBoard.textContent = `You lose! ${computerHand} beats ${playerHand}`;
+        resultMsg.classList.add('resultMsg');
+        resultMsg.textContent = `You lose! ${computerHand} beats ${playerHand}`;
         ++computerScore;
-        container.appendChild(scoreBoard);
+        container.appendChild(resultMsg);
     }
 }
