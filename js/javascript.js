@@ -70,7 +70,9 @@ function playAgain() {
         gameReset();
         scoreOutput(playerScore, computerScore, tieScore);
     });
-    // noBtn.addEventListener("click", goodbyeMessage());
+    noBtn.addEventListener("click", () => {
+        container.textContent = "Goodbye";
+    });
 }
 
 //function that will output the buttons and message of replaying the game
