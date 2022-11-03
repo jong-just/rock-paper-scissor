@@ -1,7 +1,17 @@
-let playerHand;
+const buttons = document.querySelectorAll('button');
+let playerHand = '';
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
+
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerHand = button.id;
+        gameRound(playerHand, getComputerChoice());
+    });
+});
+
 
 function getComputerChoice() {
     //create a integer variable called randomNumber
@@ -19,43 +29,19 @@ function getComputerChoice() {
     } else if (randomNumber === 2) {
         computerHand = 'paper';
     } else computerHand = 'scissors'
-
+    
     //return computerHand
     return computerHand;
 
+
 }
 
-//honestly had to just look this one up, RNG for 1-3
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-
-//function to check if player made a valid choice
-function playerChoiceCheck(playerChoice) {
-    if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-//result announcement
-function winnerOutput (playerHand, computerHand, results) {
-    if (results) {
-        console.log(`You win! ${playerHand} beats ${computerHand}`);
-        ++playerScore;
-    } else {
-        console.log(`You lose! ${computerHand} beats ${playerHand}`);
-        ++computerScore;
-    }
-}
-
-
-//game logic: compares both hands, determine who wins, output results
 function gameRound(playerSelection, computerSelection) {
     //run through game logic to determine winner
     if (playerSelection === 'rock' && computerSelection === 'paper') {
@@ -78,32 +64,12 @@ function gameRound(playerSelection, computerSelection) {
 
 }
 
-//game function
-function game() {
-    //loop to allow for 5 rounds
-    for (let i = 0; i < 5; i++) {
-        playerHand = getPlayerHand();
-        console.log(`Round: ${i + 1}`);
-        playRound(playerHand);
-        console.log(`You: ${playerScore} | Computer: ${computerScore} | Tied: ${tieScore}`);
-    }
-}
-
-//function for playing a round. 
-function playRound(playerHand) {
-    if (playerChoiceCheck(playerHand)) {
-        gameRound(playerHand, getComputerChoice());
+function winnerOutput (playerHand, computerHand, results) {
+    if (results) {
+        console.log(`You win! ${playerHand} beats ${computerHand}`);
+        ++playerScore;
     } else {
-        console.log('Sorry, that is not a valid hand. Please try again.');
+        console.log(`You lose! ${computerHand} beats ${playerHand}`);
+        ++computerScore;
     }
 }
-
-//prompt for player's hand and makes it case insensitive
-function getPlayerHand() {
-    let playerChoice = prompt('What hand do you play? (rock, paper, scissors): ', '');
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
-
-//call game, this is what actually starts the whole thing
-game();
