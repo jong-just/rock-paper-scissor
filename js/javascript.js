@@ -1,18 +1,26 @@
 const buttons = document.querySelectorAll('button');
 const container = document.querySelector('#container');
 const resultMsg = document.createElement('div');
+const scoreBoard = document.createElement('div');
 let playerHand = '';
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
 
-
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerHand = button.id;
-        gameRound(playerHand, getComputerChoice());
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerHand = button.id;
+            gameRound(playerHand, getComputerChoice());
+            scoreOutput(playerScore, computerScore, tieScore);
+        });
     });
-});
+
+function scoreOutput (playScore, compScore, tScore) {
+    scoreBoard.classList.add('scoreBoard');
+    scoreBoard.textContent = `You: ${playScore} | Computer: ${compScore} | Tied: ${tScore}`;
+    container.appendChild(scoreBoard);
+}
+
 
 
 function getComputerChoice() {
