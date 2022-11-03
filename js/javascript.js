@@ -2,7 +2,14 @@ const buttons = document.querySelectorAll('button');
 const container = document.querySelector('#container');
 const resultMsg = document.createElement('div');
 const scoreBoard = document.createElement('div');
+scoreBoard.classList.add('scoreBoard');
 const winnerMessage = document.createElement('div');
+winnerMessage.classList.add('winnerMessage');
+const resetMessage = document.createElement('div');
+const yesBtn = document.createElement('button');
+yesBtn.textContent = "Yes";
+const noBtn = document.createElement('button');
+noBtn.textContent = 'No';
 let playerHand = '';
 let playerScore = 0;
 let computerScore = 0;
@@ -19,22 +26,52 @@ buttons.forEach((button) => {
 
 
 //outputs current score to DOM
-function scoreOutput (playScore, compScore, tScore) {
-    scoreBoard.classList.add('scoreBoard');
+function scoreOutput(playScore, compScore, tScore) {
+
     scoreBoard.textContent = `You: ${playScore} | Computer: ${compScore} | Tied: ${tScore}`;
     container.appendChild(scoreBoard);
 }
 
-function checkWinner (playScore, compScore) {
+function checkWinner(playScore, compScore) {
     if (playScore === 5) {
-        winnerMessage.classList.add('winnerMessage');
+
         winnerMessage.textContent = "You won!";
         container.appendChild(winnerMessage);
+        playAgain();
     } else if (compScore === 5) {
-        winnerMessage.classList.add('winnerMessage');
+
         winnerMessage.textContent = "Computer won!";
         container.appendChild(winnerMessage);
+        playAgain();
     }
+}
+
+function gameReset() {
+    playerScore = 0;
+    computerScore = 0;
+    tieScore = 0;
+    container.removeChild(winnerMessage);
+    container.removeChild(resetMessage);
+}
+
+function playAgain() {
+    resetMessageOutput();
+    yesBtn.addEventListener("click", () => {
+        gameReset();
+        scoreOutput(playerScore, computerScore, tieScore);
+    });
+    // noBtn.addEventListener("click", goodbyeMessage());
+}
+
+function resetMessageOutput() {
+    resetMessage.textContent = "Do you want to play again?"
+    resetMessage.appendChild(yesBtn);
+    resetMessage.appendChild(noBtn);
+    container.appendChild(resetMessage);
+}
+
+function goodbyeMessage() {
+    container.textContent = "Goodbye";
 }
 
 
