@@ -6,23 +6,31 @@ scoreBoard.classList.add('scoreBoard');
 const winnerMessage = document.createElement('div');
 winnerMessage.classList.add('winnerMessage');
 const resetMessage = document.createElement('div');
+
+//creating buttons for replay options
 const yesBtn = document.createElement('button');
 yesBtn.textContent = "Yes";
 const noBtn = document.createElement('button');
 noBtn.textContent = 'No';
+
+
 let playerHand = '';
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerHand = button.id;
-        gameRound(playerHand, getComputerChoice());
-        scoreOutput(playerScore, computerScore, tieScore);
-        checkWinner(playerScore, computerScore);
+
+function gameStart() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerHand = button.id;
+            gameRound(playerHand, getComputerChoice());
+            scoreOutput(playerScore, computerScore, tieScore);
+            checkWinner(playerScore, computerScore);
+        });
     });
-});
+}
+
 
 
 //outputs current score to DOM
@@ -32,20 +40,21 @@ function scoreOutput(playScore, compScore, tScore) {
     container.appendChild(scoreBoard);
 }
 
+
+//function that checks if winner has been found and triggers replay option function
 function checkWinner(playScore, compScore) {
     if (playScore === 5) {
-
         winnerMessage.textContent = "You won!";
         container.appendChild(winnerMessage);
         playAgain();
     } else if (compScore === 5) {
-
         winnerMessage.textContent = "Computer won!";
         container.appendChild(winnerMessage);
         playAgain();
     }
 }
 
+//function to reset scores and remove message of winner and resetting
 function gameReset() {
     playerScore = 0;
     computerScore = 0;
@@ -54,6 +63,7 @@ function gameReset() {
     container.removeChild(resetMessage);
 }
 
+//function that will listen for triggers to start reset message output
 function playAgain() {
     resetMessageOutput();
     yesBtn.addEventListener("click", () => {
@@ -63,6 +73,7 @@ function playAgain() {
     // noBtn.addEventListener("click", goodbyeMessage());
 }
 
+//function that will output the buttons and message of replaying the game
 function resetMessageOutput() {
     resetMessage.textContent = "Do you want to play again?"
     resetMessage.appendChild(yesBtn);
@@ -70,6 +81,8 @@ function resetMessageOutput() {
     container.appendChild(resetMessage);
 }
 
+
+//function that just outputs goodbye
 function goodbyeMessage() {
     container.textContent = "Goodbye";
 }
@@ -141,3 +154,6 @@ function winnerOutput (playerHand, computerHand, results) {
         container.appendChild(resultMsg);
     }
 }
+
+
+gameStart();
