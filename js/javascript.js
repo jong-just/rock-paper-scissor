@@ -8,6 +8,7 @@ winnerMessage.classList.add('winnerMessage');
 const resetMessage = document.createElement('div');
 const gameEndScreen = document.createElement('div');
 gameEndScreen.classList.add('endScreen');
+const choiceButtons = document.querySelector('#choices');
 
 //creating buttons for replay options
 const yesBtn = document.createElement('button');
@@ -63,7 +64,7 @@ function gameReset() {
     tieScore = 0;
     container.removeChild(winnerMessage);
     container.removeChild(resetMessage);
-    buttons.forEach((button) => container.appendChild(button));
+    container.appendChild(choiceButtons);
 }
 
 //function that will listen for triggers to start reset message output
@@ -80,7 +81,8 @@ function playAgain() {
 
 //function that will output the buttons and message of replaying the game
 function resetMessageOutput() {
-    buttons.forEach((button) => container.removeChild(button));
+    // buttons.forEach((button) => container.removeChild(button));
+    container.removeChild(choiceButtons);
     container.removeChild(resultMsg);
     resetMessage.textContent = "Do you want to play again?"
     resetMessage.appendChild(yesBtn);
