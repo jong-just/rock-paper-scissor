@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll('button');
 const container = document.querySelector('#container');
 const resultMsg = document.createElement('div');
+resultMsg.classList.add('resultMessage')
 const scoreBoard = document.createElement('div');
 scoreBoard.classList.add('scoreBoard');
 const winnerMessage = document.createElement('div');
@@ -24,6 +25,7 @@ let tieScore = 0;
 
 
 function gameStart() {
+    scoreOutput(playerScore, computerScore, tieScore);
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerHand = button.id;
@@ -51,7 +53,7 @@ function checkWinner(playScore, compScore) {
         container.appendChild(winnerMessage);
         playAgain();
     } else if (compScore === 5) {
-        winnerMessage.textContent = "Computer won!";
+        winnerMessage.textContent = "You lost!";
         container.appendChild(winnerMessage);
         playAgain();
     }

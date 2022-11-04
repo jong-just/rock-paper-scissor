@@ -1,0 +1,42 @@
+* {
+    background-color: #565656;
+    font-family: sans-serif, 'Times New Roman';
+}
+
+.buttons {
+    background-color: #fba92c;
+    color: white;
+    font-size: 64px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition-duration: 0.2s;
+}
+
+.buttons:hover {
+    background-color: white;
+    color: #fba92c;
+    scale: 1.02;
+    cursor: pointer;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid black;
+}
+
+.scoreBoard {
+    background-color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.winnerMessage {
+    font-size: 32px;
+}
+
+.resultMessage {
+    font-size: 32px;
+}
